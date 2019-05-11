@@ -4,13 +4,11 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import java.util.Random;
-
 public class GildedRoseTest {
 
     @Test
     public void zeroSellInAndQualityItem_updateOnce_minusOneSellInZeroQuality() {
-        Item[] items = createItems("foo");
+        Item[] items = createItems("foo", 0, 0);
 
         GildedRose app = new GildedRose(items);
         app.updateQuality();
@@ -21,19 +19,28 @@ public class GildedRoseTest {
         assertItem(items[0], updatedItems[0]);
     }
 
-    private Item[] createItems(String itemName) {
-        return new Item[] { createItem(itemName) };
+    @Test
+    public void twoSellInOneQualityItem_updateOnce_OneSellInZeroQuality() {
+        Item[] items = createItems("foo", 2, 1);
+
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+
+        Item[] updatedItems = app.getItems();
+        assertEquals(1, updatedItems.length);
+
+        assertItem(items[0], updatedItems[0]);
     }
 
-    private Item createItem(String itemName) {
-        Random random = new Random();
-        return new Item(itemName, random.nextInt(10), random.nextInt(10));
+    private Item[] createItems(String itemName, int sellIn, int quality) {
+        Item item = new Item(itemName, sellIn, quality);
+        return new Item[] { item };
     }
 
     private void assertItem(Item expected, Item actual) {
         assertEquals("name field mismatch", expected.name, actual.name);
         assertEquals("sellIn field mismatch", expected.sellIn - 1, actual.sellIn);
-        assertEquals("quality field mismatch", expected.quality - 1, actual.quality);
+        assertEquals("quality field mismatch", 0, actual.quality);
     }
 
 }
