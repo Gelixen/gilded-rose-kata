@@ -31,9 +31,9 @@ public class GildedRoseTest {
     }
 
     private void assertItem(Item expected, Item actual) {
-        assertEquals(expected.name, actual.name);
-        assertEquals(expected.sellIn, actual.sellIn);
-        assertEquals(expected.quality, actual.quality);
+        assertEquals("name field mismatch", expected.name, actual.name);
+        assertEquals("sellIn field mismatch", expected.sellIn - 1, actual.sellIn);
+        assertEquals("quality field mismatch", expected.quality - 1, actual.quality);
     }
 
 }
