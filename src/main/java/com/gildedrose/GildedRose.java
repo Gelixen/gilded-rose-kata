@@ -1,10 +1,18 @@
 package com.gildedrose;
 
+import java.util.Arrays;
+
 class GildedRose {
     private Item[] items;
 
     public GildedRose(Item[] items) {
-        this.items = items;
+        this.items = makeDeepCopy(items);
+    }
+
+    private Item[] makeDeepCopy(Item[] items) {
+        return Arrays.stream(items)
+                .map(item -> new Item(item.name, item.sellIn, item.quality))
+                .toArray(Item[]::new);
     }
 
     public void updateQuality() {
