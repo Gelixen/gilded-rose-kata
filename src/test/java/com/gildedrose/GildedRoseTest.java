@@ -3,44 +3,53 @@ package com.gildedrose;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
+import java.util.Arrays;
+import java.util.Collection;
+
+@RunWith(Parameterized.class)
 public class GildedRoseTest {
 
-    @Test
-    public void zeroSellInAndQualityItem_updateOnce_minusOneSellInZeroQuality() {
-        Item[] items = createItems("foo", 0, 0);
+    private Item startingItem;
+    private Item expectedItem;
 
-        GildedRose app = new GildedRose(items);
-        app.updateQuality();
+    public GildedRoseTest(Item startingItem, Item expectedItem) {
+        this.startingItem = startingItem;
+        this.expectedItem = expectedItem;
+    }
 
-        Item[] updatedItems = app.getItems();
-        assertEquals(1, updatedItems.length);
-
-        assertItem(items[0], updatedItems[0]);
+    @Parameterized.Parameters(name = "{0} -> {1}")
+    public static Collection primeNumbers() {
+        return Arrays.asList(new Object[][] {
+                { new Item("foo", 1, 0), new Item("foo", 0, 0) },
+                { new Item("foo", 1, 15), new Item("foo", 0, 14) },
+                { new Item("foo", 1, 50), new Item("foo", 0, 49) },
+                { new Item("foo", -5, 5), new Item("foo", -6, 3) },
+                { new Item("foo", 0, 5), new Item("foo", -1, 3) },
+                { new Item("foo", 3, 5), new Item("foo", 2, 4) },
+                { new Item("foo", 6, 5), new Item("foo", 5, 4) },
+                { new Item("foo", 8, 5), new Item("foo", 7, 4) },
+                { new Item("foo", 11, 5), new Item("foo", 10, 4) },
+                { new Item("foo", 15, 5), new Item("foo", 14, 4) }
+        });
     }
 
     @Test
-    public void twoSellInOneQualityItem_updateOnce_OneSellInZeroQuality() {
-        Item[] items = createItems("foo", 2, 1);
+    public void testUpdate() {
+        GildedRose app = new GildedRose(new Item[]{ startingItem });
 
-        GildedRose app = new GildedRose(items);
         app.updateQuality();
 
-        Item[] updatedItems = app.getItems();
-        assertEquals(1, updatedItems.length);
-
-        assertItem(items[0], updatedItems[0]);
-    }
-
-    private Item[] createItems(String itemName, int sellIn, int quality) {
-        Item item = new Item(itemName, sellIn, quality);
-        return new Item[] { item };
+        Item actualItem = app.getItems()[0];
+        assertItem(expectedItem, actualItem);
     }
 
     private void assertItem(Item expected, Item actual) {
         assertEquals("name field mismatch", expected.name, actual.name);
-        assertEquals("sellIn field mismatch", expected.sellIn - 1, actual.sellIn);
-        assertEquals("quality field mismatch", 0, actual.quality);
+        assertEquals("sellIn field mismatch", expected.sellIn, actual.sellIn);
+        assertEquals("quality field mismatch", expected.quality, actual.quality);
     }
 
 }
