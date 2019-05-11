@@ -8,11 +8,9 @@ class GildedRose {
     static final String TAFKAL = "Backstage passes to a TAFKAL80ETC concert";
     static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
 
-    private static final int QUALITY_LIMIT = 50;
-
     private Item[] items;
 
-    public GildedRose(Item[] items) {
+    GildedRose(Item[] items) {
         this.items = makeDeepCopy(items);
     }
 
@@ -22,71 +20,13 @@ class GildedRose {
                 .toArray(Item[]::new);
     }
 
-    public void updateQuality() {
+    void updateQuality() {
         for (Item item : items) {
-            String name = item.name;
-
-            if (name.equals(SULFURAS)) {
-                continue;
-            }
-
-            if (name.equals(AGED_BRIE)) {
-                if (qualityBellowLimit(item)) {
-                    item.quality++;
-                }
-
-                item.sellIn--;
-
-                if (item.sellIn < 0) {
-                    if (qualityBellowLimit(item)) {
-                        item.quality++;
-                    }
-                }
-
-                continue;
-            }
-
-            if (name.equals(TAFKAL)) {
-                if (qualityBellowLimit(item)) {
-                    item.quality++;
-
-                    if (item.sellIn < 11 && qualityBellowLimit(item)) {
-                        item.quality++;
-                    }
-
-                    if (item.sellIn < 6 && qualityBellowLimit(item)) {
-                        item.quality++;
-                    }
-                }
-
-                item.sellIn--;
-
-                if (item.sellIn < 0) {
-                    item.quality = 0;
-                }
-
-                continue;
-            }
-
-            if (item.quality > 0) {
-                item.quality--;
-            }
-
-            item.sellIn--;
-
-            if (item.sellIn < 0) {
-                if (item.quality > 0) {
-                    item.quality--;
-                }
-            }
+            ItemType.fromName(item.name).updateQuality(item);
         }
     }
 
-    private boolean qualityBellowLimit(Item item) {
-        return item.quality < QUALITY_LIMIT;
-    }
-
-    public Item[] getItems() {
+    Item[] getItems() {
         return items;
     }
 }
