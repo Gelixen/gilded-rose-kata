@@ -52,6 +52,7 @@ public class GildedRoseTest {
                 { new Item(TAFKAL, 10, 45), new Item(TAFKAL, 9, 47) }, // Q < 49 & 11 < S <= 6    Q + 2
                 { new Item(TAFKAL, 5, 48), new Item(TAFKAL, 4, 50) }, // Q < 49 & S < 6    Q + 2
                 { new Item(TAFKAL, 5, 46), new Item(TAFKAL, 4, 49) }, // Q < 48 & S < 6    Q + 3
+                { new Item(TAFKAL, -2, 46), new Item(TAFKAL, -3, 0) }, // Q < 48 & S < 0    Q = 0
 
                 { new Item(SULFURAS, 15, 60), new Item(SULFURAS, 15, 60) }, // Q >= 50 & S >= 0    Q & S no changes
                 { new Item(SULFURAS, 15, 60), new Item(SULFURAS, 15, 60) }, // Q >= 50 & S < 0    Q & S no changes
