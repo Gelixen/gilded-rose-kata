@@ -1,5 +1,6 @@
 package com.gildedrose;
 
+import static com.gildedrose.GildedRose.*;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
@@ -13,9 +14,6 @@ import java.util.Collection;
 public class GildedRoseTest {
 
     private static final String RANDOM_NAME = "foo";
-    private static final String AGED_BRIE = "Aged Brie";
-    private static final String TAFKAL = "Backstage passes to a TAFKAL80ETC concert";
-    private static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
 
     private Item startingItem;
     private Item expectedItem;

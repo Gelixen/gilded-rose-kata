@@ -4,6 +4,10 @@ import java.util.Arrays;
 
 class GildedRose {
 
+    static final String AGED_BRIE = "Aged Brie";
+    static final String TAFKAL = "Backstage passes to a TAFKAL80ETC concert";
+    static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
+
     private static final int QUALITY_LIMIT = 50;
 
     private Item[] items;
@@ -20,15 +24,15 @@ class GildedRose {
 
     public void updateQuality() {
         for (Item item : items) {
-            if (!item.name.equals("Aged Brie") && !item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                if (item.quality > 0 && !item.name.equals("Sulfuras, Hand of Ragnaros")) {
+            if (!item.name.equals(AGED_BRIE) && !item.name.equals(TAFKAL)) {
+                if (item.quality > 0 && !item.name.equals(SULFURAS)) {
                     item.quality--;
                 }
             } else {
                 if (qualityBellowLimit(item)) {
                     item.quality++;
 
-                    if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+                    if (item.name.equals(TAFKAL)) {
                         if (item.sellIn < 11 && qualityBellowLimit(item)) {
                             item.quality++;
                         }
@@ -40,14 +44,14 @@ class GildedRose {
                 }
             }
 
-            if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
+            if (!item.name.equals(SULFURAS)) {
                 item.sellIn--;
             }
 
             if (item.sellIn < 0) {
-                if (!item.name.equals("Aged Brie")) {
-                    if (!item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                        if (item.quality > 0 && !item.name.equals("Sulfuras, Hand of Ragnaros")) {
+                if (!item.name.equals(AGED_BRIE)) {
+                    if (!item.name.equals(TAFKAL)) {
+                        if (item.quality > 0 && !item.name.equals(SULFURAS)) {
                             item.quality--;
                         }
                     } else {
