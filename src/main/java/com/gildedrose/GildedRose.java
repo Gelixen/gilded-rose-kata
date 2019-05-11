@@ -24,8 +24,12 @@ class GildedRose {
 
     public void updateQuality() {
         for (Item item : items) {
+            if (item.name.equals(SULFURAS)) {
+                continue;
+            }
+
             if (!item.name.equals(AGED_BRIE) && !item.name.equals(TAFKAL)) {
-                if (item.quality > 0 && !item.name.equals(SULFURAS)) {
+                if (item.quality > 0) {
                     item.quality--;
                 }
             } else {
@@ -44,14 +48,12 @@ class GildedRose {
                 }
             }
 
-            if (!item.name.equals(SULFURAS)) {
-                item.sellIn--;
-            }
+            item.sellIn--;
 
             if (item.sellIn < 0) {
                 if (!item.name.equals(AGED_BRIE)) {
                     if (!item.name.equals(TAFKAL)) {
-                        if (item.quality > 0 && !item.name.equals(SULFURAS)) {
+                        if (item.quality > 0) {
                             item.quality--;
                         }
                     } else {
