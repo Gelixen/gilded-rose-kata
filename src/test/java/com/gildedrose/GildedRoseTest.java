@@ -10,7 +10,7 @@ public class GildedRoseTest {
 
     @Test
     public void zeroSellInAndQualityItem_updateOnce_minusOneSellInZeroQuality() {
-        Item[] items = createItems(1);
+        Item[] items = createItems("foo");
 
         GildedRose app = new GildedRose(items);
         app.updateQuality();
@@ -21,14 +21,8 @@ public class GildedRoseTest {
         assertItem(items[0], updatedItems[0]);
     }
 
-    private Item[] createItems(int count) {
-        Item[] items = new Item[count];
-
-        for (int i = 0; i < count; i++) {
-            items[i] = createItem("foo");
-        }
-
-        return items;
+    private Item[] createItems(String itemName) {
+        return new Item[] { createItem(itemName) };
     }
 
     private Item createItem(String itemName) {
