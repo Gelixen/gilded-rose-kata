@@ -13,10 +13,13 @@ public class GildedRoseTest {
         GildedRose app = new GildedRose(items);
         app.updateQuality();
 
-        assertEquals(1, app.getItems().length);
-        assertEquals("foo", app.getItems()[0].name);
-        assertEquals(-1, app.getItems()[0].sellIn);
-        assertEquals(0, app.getItems()[0].quality);
+        Item[] updatedItems = app.getItems();
+        assertEquals(1, updatedItems.length);
+
+        Item firstUpdatedItem = updatedItems[0];
+        assertEquals("foo", firstUpdatedItem.name);
+        assertEquals(-1, firstUpdatedItem.sellIn);
+        assertEquals(0, firstUpdatedItem.quality);
     }
 
     private Item[] createItems(int count) {
