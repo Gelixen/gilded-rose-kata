@@ -28,11 +28,7 @@ class GildedRose {
                 continue;
             }
 
-            if (!item.name.equals(AGED_BRIE) && !item.name.equals(TAFKAL)) {
-                if (item.quality > 0) {
-                    item.quality--;
-                }
-            } else {
+            if (item.name.equals(AGED_BRIE) || item.name.equals(TAFKAL)) {
                 if (qualityBellowLimit(item)) {
                     item.quality++;
 
@@ -46,22 +42,26 @@ class GildedRose {
                         }
                     }
                 }
+            } else {
+                if (item.quality > 0) {
+                    item.quality--;
+                }
             }
 
             item.sellIn--;
 
             if (item.sellIn < 0) {
-                if (!item.name.equals(AGED_BRIE)) {
-                    if (!item.name.equals(TAFKAL)) {
+                if (item.name.equals(AGED_BRIE)) {
+                    if (qualityBellowLimit(item)) {
+                        item.quality++;
+                    }
+                } else {
+                    if (item.name.equals(TAFKAL)) {
+                        item.quality = 0;
+                    } else {
                         if (item.quality > 0) {
                             item.quality--;
                         }
-                    } else {
-                        item.quality = 0;
-                    }
-                } else {
-                    if (qualityBellowLimit(item)) {
-                        item.quality++;
                     }
                 }
             }
