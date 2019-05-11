@@ -24,45 +24,59 @@ class GildedRose {
 
     public void updateQuality() {
         for (Item item : items) {
-            if (item.name.equals(SULFURAS)) {
+            String name = item.name;
+
+            if (name.equals(SULFURAS)) {
                 continue;
             }
 
-            if (item.name.equals(AGED_BRIE) || item.name.equals(TAFKAL)) {
+            if (name.equals(AGED_BRIE)) {
+                if (qualityBellowLimit(item)) {
+                    item.quality++;
+                }
+
+                item.sellIn--;
+
+                if (item.sellIn < 0) {
+                    if (qualityBellowLimit(item)) {
+                        item.quality++;
+                    }
+                }
+
+                continue;
+            }
+
+            if (name.equals(TAFKAL)) {
                 if (qualityBellowLimit(item)) {
                     item.quality++;
 
-                    if (item.name.equals(TAFKAL)) {
-                        if (item.sellIn < 11 && qualityBellowLimit(item)) {
-                            item.quality++;
-                        }
+                    if (item.sellIn < 11 && qualityBellowLimit(item)) {
+                        item.quality++;
+                    }
 
-                        if (item.sellIn < 6 && qualityBellowLimit(item)) {
-                            item.quality++;
-                        }
+                    if (item.sellIn < 6 && qualityBellowLimit(item)) {
+                        item.quality++;
                     }
                 }
-            } else {
-                if (item.quality > 0) {
-                    item.quality--;
+
+                item.sellIn--;
+
+                if (item.sellIn < 0) {
+                    item.quality = 0;
                 }
+
+                continue;
+            }
+
+            if (item.quality > 0) {
+                item.quality--;
             }
 
             item.sellIn--;
 
             if (item.sellIn < 0) {
-                if (item.name.equals(AGED_BRIE)) {
-                    if (qualityBellowLimit(item)) {
-                        item.quality++;
-                    }
-                } else {
-                    if (item.name.equals(TAFKAL)) {
-                        item.quality = 0;
-                    } else {
-                        if (item.quality > 0) {
-                            item.quality--;
-                        }
-                    }
+                if (item.quality > 0) {
+                    item.quality--;
                 }
             }
         }
