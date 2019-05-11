@@ -32,13 +32,13 @@ public class GildedRoseTest {
                 { new Item(RANDOM_NAME, 1, 15), new Item(RANDOM_NAME, 0, 14) },
                 { new Item(RANDOM_NAME, 1, 50), new Item(RANDOM_NAME, 0, 49) },
 
-                { new Item(RANDOM_NAME, -5, 5), new Item(RANDOM_NAME, -6, 3) },
-                { new Item(RANDOM_NAME, 0, 5), new Item(RANDOM_NAME, -1, 3) },
-                { new Item(RANDOM_NAME, 3, 5), new Item(RANDOM_NAME, 2, 4) },
-                { new Item(RANDOM_NAME, 6, 5), new Item(RANDOM_NAME, 5, 4) },
-                { new Item(RANDOM_NAME, 8, 5), new Item(RANDOM_NAME, 7, 4) },
-                { new Item(RANDOM_NAME, 11, 5), new Item(RANDOM_NAME, 10, 4) },
-                { new Item(RANDOM_NAME, 15, 5), new Item(RANDOM_NAME, 14, 4) },
+                { new Item(RANDOM_NAME, -5, 5), new Item(RANDOM_NAME, -6, 3) }, // S < 0    Q - 2
+                { new Item(RANDOM_NAME, 0, 5), new Item(RANDOM_NAME, -1, 3) }, // S < 0    Q - 2
+                { new Item(RANDOM_NAME, 3, 5), new Item(RANDOM_NAME, 2, 4) }, // S> 0    Q - 1
+                { new Item(RANDOM_NAME, 6, 5), new Item(RANDOM_NAME, 5, 4) }, // S> 0    Q - 1
+                { new Item(RANDOM_NAME, 8, 5), new Item(RANDOM_NAME, 7, 4) }, // S> 0    Q - 1
+                { new Item(RANDOM_NAME, 11, 5), new Item(RANDOM_NAME, 10, 4) }, // S> 0    Q - 1
+                { new Item(RANDOM_NAME, 15, 5), new Item(RANDOM_NAME, 14, 4) }, // S> 0    Q - 1
 
                 { new Item(AGED_BRIE, 15, 60), new Item(AGED_BRIE, 14, 60) }, // Q >= 50 & S >= 0    Q (no change)
                 { new Item(AGED_BRIE, -5, 60), new Item(AGED_BRIE, -6, 60) }, // Q >= 50 & S < 0    Q (no change)
