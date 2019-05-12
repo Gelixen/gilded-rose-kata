@@ -24,7 +24,7 @@ class GildedRose {
     void updateQuality() {
         CompletableFuture.runAsync(() -> {
             for (Item item : items) {
-                ItemType.fromName(item.name).resolveClass().update(item);
+                ItemType.fromName(item.name).resolveUpdater().update(item);
             }
         });
     }

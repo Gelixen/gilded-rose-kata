@@ -6,35 +6,35 @@ public enum ItemType {
 
     AGED_BRIE("Aged Brie") {
         @Override
-        ItemUpdater resolveClass() {
+        ItemUpdater resolveUpdater() {
             return new AgedBrieUpdater();
         }
     },
 
     TAFKAL("Backstage passes to a TAFKAL80ETC concert") {
         @Override
-        ItemUpdater resolveClass() {
+        ItemUpdater resolveUpdater() {
             return new TafkalItemUpdater();
         }
     },
 
     SULFURAS("Sulfuras, Hand of Ragnaros") {
         @Override
-        ItemUpdater resolveClass() {
+        ItemUpdater resolveUpdater() {
             return new SulfurasItemUpdater();
         }
     },
 
     CONJURED("Conjured") {
         @Override
-        ItemUpdater resolveClass() {
+        ItemUpdater resolveUpdater() {
             return new ConjuredItemUpdater();
         }
     },
 
     BASIC("Basic") {
         @Override
-        ItemUpdater resolveClass() {
+        ItemUpdater resolveUpdater() {
             return new BasicItemUpdater();
         }
     };
@@ -59,5 +59,5 @@ public enum ItemType {
         return name.startsWith(CONJURED.getName()) ? CONJURED : BASIC ;
     }
 
-    abstract ItemUpdater resolveClass();
+    abstract ItemUpdater resolveUpdater();
 }
