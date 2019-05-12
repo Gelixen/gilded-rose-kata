@@ -48,15 +48,17 @@ enum ItemType {
     CONJURED("Conjured") {
         @Override
         void updateQuality(Item item) {
-            if (item.quality > 0) {
-                item.quality -= 2;
-            }
+            int rawQuality = item.quality;
+
+            rawQuality -= 2;
 
             item.sellIn--;
 
-            if (item.sellIn < 0 && item.quality > 0) {
-                item.quality -= 2;
+            if (item.sellIn < 0) {
+                rawQuality -= 2;
             }
+
+            item.quality = rawQuality > 0 ? rawQuality : 0;
         }
     },
 

@@ -60,8 +60,10 @@ public class GildedRoseTest {
                 { new Item(SULFURAS, 15, 0), new Item(SULFURAS, 15, 0) }, // Q = 0 & S >= 0    Q & S no changes
                 { new Item(SULFURAS, 15, 0), new Item(SULFURAS, 15, 0) }, // Q = 0 & S < 0    Q & S no changes
 
-                { new Item(RANDOM_CONJURED_NAME, 4, 15), new Item(RANDOM_CONJURED_NAME, 3, 13) }, // S> 0    Q - 2
+                { new Item(RANDOM_CONJURED_NAME, 4, 15), new Item(RANDOM_CONJURED_NAME, 3, 13) }, // S > 0    Q - 2
+                { new Item(RANDOM_CONJURED_NAME, 4, 1), new Item(RANDOM_CONJURED_NAME, 3, 0) }, // Q = 1 & S > 0    Q - 1
                 { new Item(RANDOM_CONJURED_NAME, 0, 15), new Item(RANDOM_CONJURED_NAME, -1, 11) }, // S <= 0    Q - 4
+                { new Item(RANDOM_CONJURED_NAME, 0, 3), new Item(RANDOM_CONJURED_NAME, -1, 0) }, // Q = 3 & S <= 0    Q - 1
         });
     }
 
