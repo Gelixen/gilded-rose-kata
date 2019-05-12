@@ -21,9 +21,11 @@ class GildedRose {
     }
 
     void updateQuality() {
-        for (Item item : items) {
-            ItemType.fromName(item.name).updateQuality(item);
-        }
+        new Thread(() -> {
+            for (Item item : items) {
+                ItemType.fromName(item.name).updateQuality(item);
+            }
+        }).start();
     }
 
     Item[] getItems() {
