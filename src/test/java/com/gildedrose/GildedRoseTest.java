@@ -14,6 +14,7 @@ import java.util.Collection;
 public class GildedRoseTest {
 
     private static final String RANDOM_NAME = "foo";
+    private static final String RANDOM_CONJURED_NAME = "Conjured foo";
 
     private Item startingItem;
     private Item expectedItem;
@@ -58,6 +59,9 @@ public class GildedRoseTest {
                 { new Item(SULFURAS, 15, 5), new Item(SULFURAS, 15, 5) }, // 0 < Q < 50 & S < 0    Q & S no changes
                 { new Item(SULFURAS, 15, 0), new Item(SULFURAS, 15, 0) }, // Q = 0 & S >= 0    Q & S no changes
                 { new Item(SULFURAS, 15, 0), new Item(SULFURAS, 15, 0) }, // Q = 0 & S < 0    Q & S no changes
+
+                { new Item(RANDOM_CONJURED_NAME, 4, 15), new Item(RANDOM_CONJURED_NAME, 3, 13) }, // S> 0    Q - 2
+                { new Item(RANDOM_CONJURED_NAME, 0, 15), new Item(RANDOM_CONJURED_NAME, -1, 11) }, // S <= 0    Q - 4
         });
     }
 
@@ -66,7 +70,7 @@ public class GildedRoseTest {
         GildedRose app = new GildedRose(new Item[]{ startingItem });
 
         app.updateQuality();
-        Thread.sleep(5);
+        Thread.sleep(10);
 
         Item actualItem = app.getItems()[0];
         assertItem(expectedItem, actualItem);

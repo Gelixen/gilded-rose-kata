@@ -45,6 +45,21 @@ enum ItemType {
         void updateQuality(Item item) {}
     },
 
+    CONJURED("Conjured") {
+        @Override
+        void updateQuality(Item item) {
+            if (item.quality > 0) {
+                item.quality -= 2;
+            }
+
+            item.sellIn--;
+
+            if (item.sellIn < 0 && item.quality > 0) {
+                item.quality -= 2;
+            }
+        }
+    },
+
     BASIC("Basic") {
         @Override
         void updateQuality(Item item) {
@@ -67,12 +82,17 @@ enum ItemType {
     }
 
     public static ItemType fromName(String name) {
-        for (ItemType item : ItemType.values()) {
-            if (item.name.equalsIgnoreCase(name)) {
-                return item;
+        for (ItemType itemType : ItemType.values()) {
+            if (itemType.name.equalsIgnoreCase(name)) {
+                return itemType;
             }
         }
-        return BASIC;
+
+        if (name.startsWith(CONJURED.name)) {
+            return CONJURED;
+        } else {
+            return BASIC;
+        }
     }
 
     abstract void updateQuality(Item item);

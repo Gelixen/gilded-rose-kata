@@ -31,7 +31,7 @@ public class TexttestFixture {
             }
             System.out.println();
             app.updateQuality();
-            Thread.sleep(5);
+            Thread.sleep(10);
         }
     }
 
