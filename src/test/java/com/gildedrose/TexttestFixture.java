@@ -1,7 +1,7 @@
 package com.gildedrose;
 
 public class TexttestFixture {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         System.out.println("OMGHAI!");
 
         Item[] items = new Item[] {
@@ -31,6 +31,7 @@ public class TexttestFixture {
             }
             System.out.println();
             app.updateQuality();
+            Thread.sleep(5);
         }
     }
 
