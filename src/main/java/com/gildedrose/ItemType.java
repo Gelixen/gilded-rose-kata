@@ -1,79 +1,41 @@
 package com.gildedrose;
 
-enum ItemType {
+import com.gildedrose.updater.*;
+
+public enum ItemType {
 
     AGED_BRIE("Aged Brie") {
         @Override
-        void updateQuality(Item item) {
-            if (item.quality < 50) {
-                item.quality++;
-            }
-
-            item.sellIn--;
-
-            if (item.sellIn < 0 && item.quality < 50) {
-                item.quality++;
-            }
+        ItemUpdater resolveClass() {
+            return new AgedBrieUpdater();
         }
     },
 
     TAFKAL("Backstage passes to a TAFKAL80ETC concert") {
         @Override
-        void updateQuality(Item item) {
-            if (item.quality < 50) {
-                item.quality++;
-
-                if (item.sellIn < 11 && item.quality < 50) {
-                    item.quality++;
-                }
-
-                if (item.sellIn < 6 && item.quality < 50) {
-                    item.quality++;
-                }
-            }
-
-            item.sellIn--;
-
-            if (item.sellIn < 0) {
-                item.quality = 0;
-            }
+        ItemUpdater resolveClass() {
+            return new TafkalItemUpdater();
         }
     },
 
     SULFURAS("Sulfuras, Hand of Ragnaros") {
         @Override
-        void updateQuality(Item item) {}
+        ItemUpdater resolveClass() {
+            return new SulfurasItemUpdater();
+        }
     },
 
     CONJURED("Conjured") {
         @Override
-        void updateQuality(Item item) {
-            int rawQuality = item.quality;
-
-            rawQuality -= 2;
-
-            item.sellIn--;
-
-            if (item.sellIn < 0) {
-                rawQuality -= 2;
-            }
-
-            item.quality = rawQuality > 0 ? rawQuality : 0;
+        ItemUpdater resolveClass() {
+            return new ConjuredItemUpdater();
         }
     },
 
     BASIC("Basic") {
         @Override
-        void updateQuality(Item item) {
-            if (item.quality > 0) {
-                item.quality--;
-            }
-
-            item.sellIn--;
-
-            if (item.sellIn < 0 && item.quality > 0) {
-                item.quality--;
-            }
+        ItemUpdater resolveClass() {
+            return new BasicItemUpdater();
         }
     };
 
@@ -83,19 +45,19 @@ enum ItemType {
         this.name = name;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public static ItemType fromName(String name) {
         for (ItemType itemType : ItemType.values()) {
-            if (itemType.name.equalsIgnoreCase(name)) {
+            if (itemType.getName().equalsIgnoreCase(name)) {
                 return itemType;
             }
         }
 
-        if (name.startsWith(CONJURED.name)) {
-            return CONJURED;
-        } else {
-            return BASIC;
-        }
+        return name.startsWith(CONJURED.getName()) ? CONJURED : BASIC ;
     }
 
-    abstract void updateQuality(Item item);
+    abstract ItemUpdater resolveClass();
 }
