@@ -16,7 +16,7 @@ public class ItemUpdateScheduler {
         this.itemService = itemService;
     }
 
-    @Scheduled(cron = "0 0 0 * * ?")
+    @Scheduled(cron = "*/10 * * * * ?")
     public void updateItems() {
         logger.info("Starting scheduled items update");
         itemService.updateItems();
