@@ -1,6 +1,7 @@
 package com.gildedrose;
 
 import java.util.Arrays;
+import java.util.concurrent.CompletableFuture;
 
 class GildedRose {
 
@@ -21,11 +22,11 @@ class GildedRose {
     }
 
     void updateQuality() {
-        new Thread(() -> {
+        CompletableFuture.runAsync(() -> {
             for (Item item : items) {
                 ItemType.fromName(item.name).updateQuality(item);
             }
-        }).start();
+        });
     }
 
     Item[] getItems() {
