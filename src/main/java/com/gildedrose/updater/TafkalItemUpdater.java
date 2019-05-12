@@ -2,25 +2,28 @@ package com.gildedrose.updater;
 
 import com.gildedrose.Item;
 
+import static com.gildedrose.updater.ItemUpdater.qualityBellowUpperLimit;
+import static com.gildedrose.updater.ItemUpdater.sellInBellowZero;
+
 public class TafkalItemUpdater implements ItemUpdater {
 
     @Override
     public void update(Item item) {
-        if (item.quality < 50) {
+        if (qualityBellowUpperLimit(item)) {
             item.quality++;
 
-            if (item.sellIn < 11 && item.quality < 50) {
+            if (item.sellIn < 11 && qualityBellowUpperLimit(item)) {
                 item.quality++;
             }
 
-            if (item.sellIn < 6 && item.quality < 50) {
+            if (item.sellIn < 6 && qualityBellowUpperLimit(item)) {
                 item.quality++;
             }
         }
 
         item.sellIn--;
 
-        if (item.sellIn < 0) {
+        if (sellInBellowZero(item)) {
             item.quality = 0;
         }
     }

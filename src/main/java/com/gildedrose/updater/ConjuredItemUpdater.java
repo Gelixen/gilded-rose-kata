@@ -2,6 +2,8 @@ package com.gildedrose.updater;
 
 import com.gildedrose.Item;
 
+import static com.gildedrose.updater.ItemUpdater.sellInBellowZero;
+
 public class ConjuredItemUpdater implements ItemUpdater {
 
     @Override
@@ -12,7 +14,7 @@ public class ConjuredItemUpdater implements ItemUpdater {
 
         item.sellIn--;
 
-        if (item.sellIn < 0) {
+        if (sellInBellowZero(item)) {
             rawQuality -= 2;
         }
 
