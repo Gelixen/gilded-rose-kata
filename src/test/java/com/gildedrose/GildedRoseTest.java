@@ -39,13 +39,13 @@ public class GildedRoseTest {
                 { new Item(RANDOM_NAME, 11, 5), new Item(RANDOM_NAME, 10, 4) }, // S> 0    Q - 1
                 { new Item(RANDOM_NAME, 15, 5), new Item(RANDOM_NAME, 14, 4) }, // S> 0    Q - 1
 
-                { new Item(AGED_BRIE, 15, 60), new Item(AGED_BRIE, 14, 60) }, // Q >= 50 & S >= 0    Q (no change)
-                { new Item(AGED_BRIE, -5, 60), new Item(AGED_BRIE, -6, 60) }, // Q >= 50 & S < 0    Q (no change)
+                { new Item(AGED_BRIE, 15, 50), new Item(AGED_BRIE, 14, 50) }, // Q = 50 & S >= 0    Q (no change)
+                { new Item(AGED_BRIE, -5, 50), new Item(AGED_BRIE, -6, 50) }, // Q = 50 & S < 0    Q (no change)
                 { new Item(AGED_BRIE, 15, 10), new Item(AGED_BRIE, 14, 11) }, // Q < 50 & S >= 0    Q + 1
                 { new Item(AGED_BRIE, -5, 49), new Item(AGED_BRIE, -6, 50) }, // Q < 50 & S < 0    Q + 1
                 { new Item(AGED_BRIE, -5, 10), new Item(AGED_BRIE, -6, 12) }, // Q < 49 & S < 0    Q + 2
 
-                { new Item(TAFKAL, 15, 60), new Item(TAFKAL, 14, 60) }, // Q >= 50    Q (no change)
+                { new Item(TAFKAL, 15, 50), new Item(TAFKAL, 14, 50) }, // Q = 50    Q (no change)
                 { new Item(TAFKAL, 15, 40), new Item(TAFKAL, 14, 41) }, // Q < 50 & S >= 11    Q + 1
                 { new Item(TAFKAL, 10, 49), new Item(TAFKAL, 9, 50) }, // Q < 50 & 11 < S <= 6    Q + 1
                 { new Item(TAFKAL, 10, 45), new Item(TAFKAL, 9, 47) }, // Q < 49 & 11 < S <= 6    Q + 2
