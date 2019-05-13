@@ -18,7 +18,7 @@ public class AgedBrieUpdater implements ItemUpdater {
             rawQuality++;
         }
 
-        item.quality = rawQuality > 50 ? 50 : rawQuality;
+        item.quality = rawQuality > QUALITY_UPPER_LIMIT ? QUALITY_UPPER_LIMIT : rawQuality;
     }
 
 }
