@@ -9,7 +9,7 @@ class GildedRose {
     static final String TAFKAL = "Backstage passes to a TAFKAL80ETC concert";
     static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
 
-    private Item[] items;
+    Item[] items;
 
     GildedRose(Item[] items) {
         this.items = makeDeepCopy(items);
