@@ -26,7 +26,7 @@ public class ItemService {
         Item[] items = findItems();
 
         GildedRose gildedRose = new GildedRose(items);
-        gildedRose.updateQuality();
+        gildedRose.updateQualityAsync();
 
         updateDB(gildedRose.getItems());
     }

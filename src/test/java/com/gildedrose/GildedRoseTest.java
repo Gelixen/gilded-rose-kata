@@ -68,11 +68,10 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void testUpdate() throws InterruptedException {
+    public void testUpdate() {
         GildedRose app = new GildedRose(new Item[]{ startingItem });
 
         app.updateQuality();
-        Thread.sleep(10);
 
         Item actualItem = app.getItems()[0];
         assertItem(expectedItem, actualItem);
