@@ -1,7 +1,4 @@
-package com.gildedrose;
-
-import static com.gildedrose.GildedRose.*;
-import static org.junit.Assert.*;
+package com.gildedrose.core;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,6 +6,9 @@ import org.junit.runners.Parameterized;
 
 import java.util.Arrays;
 import java.util.Collection;
+
+import static com.gildedrose.core.GildedRose.*;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
 public class GildedRoseTest {

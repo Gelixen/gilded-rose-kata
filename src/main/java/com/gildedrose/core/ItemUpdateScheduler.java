@@ -1,5 +1,6 @@
-package com.gildedrose;
+package com.gildedrose.core;
 
+import com.gildedrose.service.ItemService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;

@@ -1,5 +1,7 @@
-package com.gildedrose;
+package com.gildedrose.controller;
 
+import com.gildedrose.core.Item;
+import com.gildedrose.service.ItemService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

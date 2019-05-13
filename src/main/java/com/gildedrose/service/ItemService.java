@@ -1,5 +1,8 @@
-package com.gildedrose;
+package com.gildedrose.service;
 
+import com.gildedrose.core.GildedRose;
+import com.gildedrose.core.Item;
+import com.gildedrose.repository.ItemRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

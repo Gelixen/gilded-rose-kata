@@ -1,8 +1,8 @@
-package com.gildedrose.updater;
+package com.gildedrose.core.updater;
 
-import com.gildedrose.Item;
+import com.gildedrose.core.Item;
 
-import static com.gildedrose.updater.ItemUpdater.sellInBellowZero;
+import static com.gildedrose.core.updater.ItemUpdater.sellInBellowZero;
 
 public class TafkalItemUpdater implements ItemUpdater {
 

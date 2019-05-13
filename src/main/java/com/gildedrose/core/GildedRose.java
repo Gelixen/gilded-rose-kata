@@ -1,17 +1,17 @@
-package com.gildedrose;
+package com.gildedrose.core;
 
 import java.util.Arrays;
 import java.util.concurrent.CompletableFuture;
 
-class GildedRose {
+public class GildedRose {
 
-    static final String AGED_BRIE = "Aged Brie";
-    static final String TAFKAL = "Backstage passes to a TAFKAL80ETC concert";
-    static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
+    public static final String AGED_BRIE = "Aged Brie";
+    public static final String TAFKAL = "Backstage passes to a TAFKAL80ETC concert";
+    public static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
 
     Item[] items;
 
-    GildedRose(Item[] items) {
+    public GildedRose(Item[] items) {
         this.items = makeDeepCopy(items);
     }
 
@@ -21,17 +21,17 @@ class GildedRose {
                 .toArray(Item[]::new);
     }
 
-    void updateQualityAsync() {
+    public void updateQualityAsync() {
         CompletableFuture.runAsync(this::updateQuality);
     }
 
-    void updateQuality() {
+    public void updateQuality() {
         for (Item item : items) {
             ItemType.fromName(item.name).resolveUpdater().update(item);
         }
     }
 
-    Item[] getItems() {
+    public Item[] getItems() {
         return items;
     }
 }

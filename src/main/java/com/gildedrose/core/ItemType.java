@@ -1,6 +1,6 @@
-package com.gildedrose;
+package com.gildedrose.core;
 
-import com.gildedrose.updater.*;
+import com.gildedrose.core.updater.*;
 
 public enum ItemType {
 

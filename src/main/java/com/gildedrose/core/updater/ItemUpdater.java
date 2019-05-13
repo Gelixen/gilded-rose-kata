@@ -1,6 +1,6 @@
-package com.gildedrose.updater;
+package com.gildedrose.core.updater;
 
-import com.gildedrose.Item;
+import com.gildedrose.core.Item;
 
 public interface ItemUpdater {
 
