@@ -22,7 +22,7 @@ class GildedRose {
     }
 
     void updateQualityAsync() {
-        CompletableFuture.runAsync(() -> updateQuality());
+        CompletableFuture.runAsync(this::updateQuality);
     }
 
     void updateQuality() {
